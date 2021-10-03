@@ -1,0 +1,8 @@
+We pledge that this program represents my own program code and that
+We have coded on my own. We received help from no one in designing and debugging
+my program. We have also read the plagiarism section in the course info sheet
+of CSC B20 and understand the consequences.
+
+Yangkun Li 1007035414
+Xiaotong Ye 1005186521
+Brian Zag Fung Lai 1007245893
