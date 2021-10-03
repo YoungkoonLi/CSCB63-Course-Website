@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Student Grades</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../static/form.css">
+    <link rel="stylesheet" type="text/css" href="../static/view_grade.css">
+    <link rel="stylesheet" type="text/css" href="../static/main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <!--The following is the navagation bar, with a logo and a few links-->
+        <!--<div id="logo">CSCB63</div> -->
+        <div id="mobile" class="user">
+            <i class="fas fa-user"></i>
+            <ul class="user-list">
+                <li onclick="location.href='/grades'"><a href="/grades">Grades</a></li>
+                {% if info['type'] == 'instructor' %}
+                <li onclick="location.href='/studentremarkrequest'"><a href="/studentremarkrequest">Remarks</a></li>
+                <li onclick="location.href='/feedback'"><a href="/feedback">View Feedback</a></li>
+                {% elif info['type'] == 'student' %}
+                <li onclick="location.href='/feedback'"><a href="/feedback">Send Feedback</a></li>
+                {% endif %}
+                <li onclick="location.href='/login'"><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+        <img id="logo" src="../static/img/logo.png" alt="logo">
+        <!--I am actaully using this input as a button here, in order to use :checked selector.-->
+        <ul class="links">
+            <li class="link" onclick="location.href='/'"><a class="first" href="/">Home</a></li>
+            <li class="link" onclick="location.href='/lectures'"><a class="first" href="/lectures">Lectures</a>
+            </li>
+            <li class="link" onclick="location.href='/tutorials'"><a class="first" href="/tutorials">Tutorials</a></li>
+            <li class="link" id="drop-down">
+                <a href="#">Others&#9660</a>
+                <ul class="sub-list">
+                    <li class="sub-link" onclick="location.href='/assignments'"><a href="/assignments">Assignments</a>
+                    </li>
+                    <li class="sub-link" onclick="location.href='/staff'"><a href="/staff">Course Team</a></li>
+                    <li class="sub-link" onclick="location.href='/links'"><a href="/links">Links</a></li>
+                    <li class="sub-link" onclick="location.href='/calendar'"><a href="/calendar">Calendar</a></li>
+                </ul>
+            </li>
+            <div id="inner" class="user">
+                <i class="fas fa-user"></i>
+                <ul class="user-list">
+                    <li onclick="location.href='/grades'"><a href="/grades">Grades</a></li>
+                    {% if info['type'] == 'instructor' %}
+                    <li onclick="location.href='/studentremarkrequest'"><a href="/studentremarkrequest">Remarks</a></li>
+                    <li onclick="location.href='/feedback'"><a href="/feedback">View Feedback</a></li>
+                    {% elif info['type'] == 'student' %}
+                    <li onclick="location.href='/feedback'"><a href="/feedback">Send Feedback</a></li>
+                    {% endif %}
+                    <li onclick="location.href='/login'"><a href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </ul>
+        <div id="outer" class="user">
+            <a href="#">Hi, {{ info['first'] }}!</a>
+            <ul class="user-list">
+                <li onclick="location.href='/grades'"><a href="/grades">Grades</a></li>
+                {% if info['type'] == 'instructor' %}
+                <li onclick="location.href='/studentremarkrequest'"><a href="/studentremarkrequest">Remarks</a></li>
+                <li onclick="location.href='/feedback'"><a href="/feedback">View Feedback</a></li>
+                {% elif info['type'] == 'student' %}
+                <li onclick="location.href='/feedback'"><a href="/feedback">Send Feedback</a></li>
+                {% endif %}
+                <li onclick="location.href='/login'"><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+
+        <!--This is the icon for side bar-->
+        <label class="side-btn" for="checker">
+            <div></div>
+            <div></div>
+            <div></div>
+        </label>
+        <!--The following is the menu bar for mobile view (some elements are collapsed into the side bar)-->
+    </nav>
+    <!--a new list for side menu-->
+    <input type="checkbox" id="checker">
+    <ul class="side-bar">
+        <li class="link" onclick="location.href='/'">
+            <a class="first" href="/">Home</a>
+        </li>
+        <li class="link" onclick="location.href='/lectures'">
+            <a class="first" href="/lectures">Lectures</a>
+        </li>
+        <li class="link" onclick="location.href='/tutorials'">
+            <a class="first" href="/tutorials">Tutorials</a>
+        </li>
+        <li class="link" onclick="location.href='/assignments'">
+            <a href="/assignments">Assignments</a>
+        </li>
+        <li class="link" onclick="location.href='/staff'">
+            <a href="/staff">Course Team</a>
+        </li>
+        <li class="link" onclick="location.href='/links'">
+            <a href="/links">Links</a>
+        </li>
+        <li class="link" onclick="location.href='/calendar'">
+            <a href="/calendar">Calendar</a>
+        </li>
+    </ul>
+    <!--end of nav bar-->
+    <!--Beginning of content-->
+    <div class="content">
+        <!--The title of the page, with image.-->
+        <div class="showcase">
+            <div>
+                <h1>Student Grades</h1>
+                <p>See how each student in the class is performing.</p>
+            </div>
+        </div>
+        <div class="table">
+            <div class="col">
+                <div class="title">ID</div>
+                {% for grade in grades %}
+                <div>{{grade['username']}}</div>
+                {% endfor %}
+            </div>
+            <div class="col">
+                <div class="title">Name</div>
+                {% for grade in grades %}
+                <div>{{grade['first'] + ' ' + grade['last']}}</div>
+                {% endfor %}
+            </div>
+            <div class="col">
+                <div class="title">Labs</div>
+                {% for grade in grades %}
+                {% if grade['lab'] == None or grade['lab'] == '' %}
+                <div>&nbsp</div>
+                {% else %}
+                <div>{{grade['lab']}}</div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col">
+                <div class="title">A1</div>
+                {% for grade in grades %}
+                {% if grade['a1'] == None or grade['a1'] == '' %}
+                <div>&nbsp</div>
+                {% else %}
+                <div>{{grade['a1']}}</div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col">
+                <div class="title">A2</div>
+                {% for grade in grades %}
+                {% if grade['a2'] == None or grade['a2'] == '' %}
+                <div>&nbsp</div>
+                {% else %}
+                <div>{{grade['a2']}}</div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col">
+                <div class="title">A3</div>
+                {% for grade in grades %}
+                {% if grade['a3'] == None or grade['a3'] == '' %}
+                <div>&nbsp</div>
+                {% else %}
+                <div>{{grade['a3']}}</div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col">
+                <div class="title">T1</div>
+                {% for grade in grades %}
+                {% if grade['t1'] == None or grade['t1'] == '' %}
+                <div>&nbsp</div>
+                {% else %}
+                <div>{{grade['t1']}}</div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col">
+                <div class="title">T2</div>
+                {% for grade in grades %}
+                {% if grade['t2'] == None or grade['t2'] == '' %}
+                <div>&nbsp</div>
+                {% else %}
+                <div>{{grade['t2']}}</div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col">
+                <div class="title">T3</div>
+                {% for grade in grades %}
+                {% if grade['t3'] == None or grade['t3'] == '' %}
+                <div>&nbsp</div>
+                {% else %}
+                <div>{{grade['t3']}}</div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col">
+                <div class="title">Final</div>
+                {% for grade in grades %}
+                {% if grade['final'] == None or grade['final'] == '' %}
+                <div>&nbsp</div>
+                {% else %}
+                <div>{{grade['final']}}</div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="form">
+            <p>Add/Change student Grade</p>
+            <form id="form" class="inputs" method="POST" action="/changegrade"
+                onsubmit="return confirm('Do you really want to submit grade changes?');">
+                <div>
+                    <p>Add/Change the grade for:</p>
+                    <input type="text" class="input" name="Username" placeholder="Username">
+
+                    <p>Which assingment grade to change?</p>
+                    <select name="Assignment" class="input">
+                        <option value="a1">Assignment 1</option>
+                        <option value="a2">Assignment 2</option>
+                        <option value="a3">Assignment 3</option>
+                        <option value="t1">Term Test 1</option>
+                        <option value="t2">Term Test 2</option>
+                        <option value="t3">Term Test 3</option>
+                        <option value="lab">Labs</option>
+                        <option value="final">Final Exam</option>
+                    </select>
+                </div>
+                <div>
+                    <p>New grade:</p>
+                    <input type="text" class="input" name="Grade">
+                </div>
+            </form>
+            <button type="submit" form="form">save</button>
+        </div>
+    </div>
+    <!--footer section-->
+    <footer>
+        <!--text-->
+        <div class="footnote">
+            <p>
+                A redesign of the CSCB63 course website by Brian Lai, Xiaotong Ye and Yangkun Li, for CSCB20 assignment.
+                Originally by Anna Bretscher.
+            </p>
+            <p>Anna Bretscher, Brian Lai, Xiaotong Ye, Yangkun Li Copyright &copy2021;</p>
+        </div>
+        <!--links-->
+        <div class="foot-links">
+            <div onclick="location.href='https://web.cs.toronto.edu/'">
+                <a href="https://web.cs.toronto.edu/">Department of CS</a>
+            </div>
+            <div onclick="location.href='mailto:yangkun.li@utoronto.ca'">
+                <a href="mailto:yangkun.li@utoronto.ca">Contact</a>
+            </div>
+        </div>
+    </footer>
+    <!--end!-->
+</body>
+
+</html>

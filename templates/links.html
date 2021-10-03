@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/links.css">
+    <link rel="stylesheet" href="../static/main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <title>CSCB63--Links</title>
+</head>
+
+<body>
+    <nav>
+        <!--The following is the navagation bar, with a logo and a few links-->
+        <!--<div id="logo">CSCB63</div> -->
+        <div id="mobile" class="user">
+            <i class="fas fa-user"></i>
+            <ul class="user-list">
+                <li onclick="location.href='/grades'"><a href="/grades">Grades</a></li>
+                {% if info['type'] == 'instructor' %}
+                <li onclick="location.href='/studentremarkrequest'"><a href="/studentremarkrequest">Remarks</a></li>
+                <li onclick="location.href='/feedback'"><a href="/feedback">View Feedback</a></li>
+                {% elif info['type'] == 'student' %}
+                <li onclick="location.href='/feedback'"><a href="/feedback">Send Feedback</a></li>
+                {% endif %}
+                <li onclick="location.href='/login'"><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+        <img id="logo" src="../static/img/logo.png" alt="logo">
+        <!--I am actaully using this input as a button here, in order to use :checked selector.-->
+        <ul class="links">
+            <li class="link" onclick="location.href='/'"><a class="first" href="/">Home</a></li>
+            <li class="link" onclick="location.href='/lectures'"><a class="first" href="/lectures">Lectures</a>
+            </li>
+            <li class="link" onclick="location.href='/tutorials'"><a class="first" href="/tutorials">Tutorials</a></li>
+            <li class="link" id="drop-down">
+                <a href="#">Others&#9660</a>
+                <ul class="sub-list">
+                    <li class="sub-link" onclick="location.href='/assignments'"><a href="/assignments">Assignments</a>
+                    </li>
+                    <li class="sub-link" onclick="location.href='/staff'"><a href="/staff">Course Team</a></li>
+                    <li class="sub-link" onclick="location.href='/links'"><a href="/links">Links</a></li>
+                    <li class="sub-link" onclick="location.href='/calendar'"><a href="/calendar">Calendar</a></li>
+                </ul>
+            </li>
+            <div id="inner" class="user">
+                <i class="fas fa-user"></i>
+                <ul class="user-list">
+                    <li onclick="location.href='/grades'"><a href="/grades">Grades</a></li>
+                    {% if info['type'] == 'instructor' %}
+                    <li onclick="location.href='/studentremarkrequest'"><a href="/studentremarkrequest">Remarks</a></li>
+                    <li onclick="location.href='/feedback'"><a href="/feedback">View Feedback</a></li>
+                    {% elif info['type'] == 'student' %}
+                    <li onclick="location.href='/feedback'"><a href="/feedback">Send Feedback</a></li>
+                    {% endif %}
+                    <li onclick="location.href='/login'"><a href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </ul>
+        <div id="outer" class="user">
+            <a href="#">Hi, {{ info['first'] }}!</a>
+            <ul class="user-list">
+                <li onclick="location.href='/grades'"><a href="/grades">Grades</a></li>
+                {% if info['type'] == 'instructor' %}
+                <li onclick="location.href='/studentremarkrequest'"><a href="/studentremarkrequest">Remarks</a></li>
+                <li onclick="location.href='/feedback'"><a href="/feedback">View Feedback</a></li>
+                {% elif info['type'] == 'student' %}
+                <li onclick="location.href='/feedback'"><a href="/feedback">Send Feedback</a></li>
+                {% endif %}
+                <li onclick="location.href='/login'"><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+
+        <!--This is the icon for side bar-->
+        <label class="side-btn" for="checker">
+            <div></div>
+            <div></div>
+            <div></div>
+        </label>
+        <!--The following is the menu bar for mobile view (some elements are collapsed into the side bar)-->
+    </nav>
+    <!--a new list for side menu-->
+    <input type="checkbox" id="checker">
+    <ul class="side-bar">
+        <li class="link" onclick="location.href='/'">
+            <a class="first" href="/">Home</a>
+        </li>
+        <li class="link" onclick="location.href='/lectures'">
+            <a class="first" href="/lectures">Lectures</a>
+        </li>
+        <li class="link" onclick="location.href='/tutorials'">
+            <a class="first" href="/tutorials">Tutorials</a>
+        </li>
+        <li class="link" onclick="location.href='/assignments'">
+            <a href="/assignments">Assignments</a>
+        </li>
+        <li class="link" onclick="location.href='/staff'">
+            <a href="/staff">Course Team</a>
+        </li>
+        <li class="link" onclick="location.href='/links'">
+            <a href="/links">Links</a>
+        </li>
+        <li class="link" onclick="location.href='/calendar'">
+            <a href="/calendar">Calendar</a>
+        </li>
+    </ul>
+    <!--end of nav bar-->
+    <!--Beginning of content-->
+    <div class="content">
+        <div class="showcase">
+            <div>
+                <h1>Important Links</h1>
+                <p>Keep these handy.</p>
+            </div>
+        </div>
+        <div class="cards">
+            <div onclick="location.href = 'http://piazza.com/utoronto.ca/winter2021/cscb63h3slec01/home'">
+                <h2 class="content-text">Piazza</h2>
+                <p class="content-text">Ask. Answer. Explore. Whenever.</p>
+            </div>
+
+            <div onclick="location.href = 'https://markus.utsc.utoronto.ca/cscb63w21'">
+                <h2 class="content-text">MarkUs</h2>
+                <p>Submit your assignments here.</p>
+            </div>
+            <div>
+                <h2 class="content-text">Latex</h2>
+                <p class="content-text">LaTeX installations: <a href="http://latex-project.org/ftp.html"
+                        target="_blank">latex project install website.</a></p>
+                <p class="content-text"><a href="../static/dummy.pdf" target="_blank">Not So Short Guide to LaTeX.</a>
+                </p>
+                <p class="content-text">You can also start with this <a href="../static/dummy.tex"
+                        target="_blank">template.tex</a> and add as you need.</p>
+            </div>
+        </div>
+    </div>
+    <!--footer section-->
+    <footer>
+        <!--text-->
+        <div class="footnote">
+            <p>
+                A redesign of the CSCB63 course website by Brian Lai, Xiaotong Ye and Yangkun Li, for CSCB20 assignment.
+                Originally by Anna Bretscher.
+            </p>
+            <p>Anna Bretscher, Brian Lai, Xiaotong Ye, Yangkun Li Copyright &copy2021;</p>
+        </div>
+        <!--links-->
+        <div class="foot-links">
+            <div onclick="location.href='https://web.cs.toronto.edu/'">
+                <a href="https://web.cs.toronto.edu/">Department of CS</a>
+            </div>
+            <div onclick="location.href='mailto:yangkun.li@utoronto.ca'">
+                <a href="mailto:yangkun.li@utoronto.ca">Contact</a>
+            </div>
+        </div>
+    </footer>
+    <!--end!-->
+</body>
+
+
+
+
+
+</html>

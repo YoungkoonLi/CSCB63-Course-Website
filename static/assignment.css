@@ -1,0 +1,59 @@
+.showcase{
+    /*backgound image for showcase area.*/
+    background-image: url(img/assignment.jpg);
+}
+
+
+/*general style for the assignment container(displayed like a card)*/
+.cards {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/*styles for each card*/
+.cards div {
+    width: 60%;
+    padding: 10px;
+    margin: 10px;
+    background-color: rgb(185, 185, 185);
+    border-radius: 5px;
+    transition: all 0.35s ease-in-out;
+}
+/*sytle for text description*/
+.content-text {
+    text-align: center;
+    text-decoration: none;
+    color: #323334;
+    transition: color 0.35s ease-in-out;
+}
+
+/*style of all the links in the assignment description*/
+
+.content-text a {
+    text-align: center;
+    text-decoration: none;
+    color: #323334;
+    padding-bottom: 0;
+    margin-bottom: 1px;
+    border-spacing: 0;
+    /*makes the border underline looks good*/
+    border-bottom: 1px transparent solid;
+    transition: color 0.35s ease-in-out, border-bottom 0.4s ease;
+}
+/*hover underline effect for links for assignment files*/
+.content-text a:hover {
+    border-bottom: 1px #f0f0f0 solid;
+}
+/*hover background color change for each assignment card.*/
+.cards div:hover {
+    background-color: #323334;
+}
+/*hover color for all text for assignment.*/
+.cards div:hover * {
+    color: rgb(240, 240, 240);
+}

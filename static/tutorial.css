@@ -1,0 +1,84 @@
+.showcase{
+    /*background image for showcase section.*/
+    background-image: url("img/tut.jpg");
+}
+
+/*body background color*/
+
+body {
+    background-color: #f0f0f0;
+}
+/*each row of the table*/
+.table {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+/*table content*/
+.table ul {
+    list-style: none;
+    width: 85%;
+    padding: 10px;
+    margin: 10px;
+    background-color: rgb(185, 185, 185);
+    border-radius: 5px;
+    transition: background-color 0.35s ease-in-out;
+}
+
+.table ul li{
+    border: 0;
+    border-bottom: 2px;
+    padding: 4px;
+    border-style: solid;
+    border-color: #323334;
+    transition: border 0.35s ease-in-out;
+}
+/*use division lines divide up link*/
+.table ul li:first-child{
+    border-top: none;
+}
+
+.table ul li:last-child{
+    border-bottom: none;
+}
+
+
+/*style of all the links in the tutorial description*/
+
+.table ul li a {
+    text-align: center;
+    text-decoration: none;
+    color: #323334;
+    padding-bottom: 0;
+    margin-bottom: 1px;
+    border-spacing: 0;
+    /*makes the border underline looks good*/
+    border-bottom: 1px transparent solid;
+    transition: color 0.3s ease-in-out, border-bottom 0.35s ease-in-out;
+}
+
+/*hover underline effect for links for tutorial files*/
+
+.table ul li a:hover {
+    border-bottom: 1px #f0f0f0 solid;
+}
+
+/*hover background color change for each tutorial card.*/
+
+.table ul:hover {
+    background-color: #323334;
+}
+/*change divsion line color effect*/
+.table ul:hover li {
+    border-color: #f0f0f0;
+}
+
+/*hover color for all text.*/
+
+.table ul:hover * {
+    color: rgb(240, 240, 240);
+}

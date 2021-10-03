@@ -1,0 +1,40 @@
+/*background image for showcase*/
+
+.showcase {
+     background-image: url(img/grade.jpg);
+}
+
+.table{
+     display: flex;
+     justify-content: center;
+     text-align: center;
+     font-size: 14px;
+     margin: 20px 0px;
+ }
+ 
+ .col{
+     width: 9%;
+     display: flex;
+     flex-direction: column;
+     border-color: black;
+     border-style: solid;
+     border: 1px black solid;
+ }
+ 
+ .col > div{
+     color: #323334;
+     border-bottom: 1px #323334 solid;
+     transition: background-color 0.3s ease-in-out;
+ }
+ /*Hover effect for table elements*/
+ .col > div:hover{
+     background-color: rgb(197, 197, 197);
+ }
+ /*title bar for table*/
+ .title{
+     font-size: 16px;
+     font-weight: 600;
+     letter-spacing: 2px;
+     border-bottom: 2px black solid;
+     background-color:rgb(197, 197, 197);
+ }

@@ -1,0 +1,40 @@
+/*background image for showcase*/
+
+.showcase {
+    background-image: url(img/grade.jpg);
+}
+
+/*style for list of grades*/
+
+.grades {
+    margin: 0 auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    background-color: rgb(216, 216, 216);
+}
+
+/*style for each grade*/
+
+.grade {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    background-color:#f0f0f0;
+    color: #323334;
+    padding: 10px;
+    width: 65%;
+    border-radius: 5px;
+    border: 3px #323334 solid;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+/*hover effects*/
+
+.grade:hover{
+    color: #f0f0f0;
+    background-color: #3233348e;
+}

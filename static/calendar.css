@@ -1,0 +1,62 @@
+.showcase{
+    /*backgound image for showcase area.*/
+    background-image: url(img/calendar.jpg);
+}
+
+
+/*each month row*/
+.month{
+    padding: auto;
+    background: bisque;
+}
+
+.month ul{
+    margin: 0mm;
+    padding: 0mm;
+}
+
+.month ul li{
+    color: rgb(30, 87, 210);
+    font-size: 20px;
+    text-transform: capitalize;
+    letter-spacing: 3px;
+}
+
+/*weekdays row*/
+.weekdays {
+    padding: auto;
+    background: rgb(209, 220, 240);
+}
+
+/*content in weekdays*/
+.weekdays li {
+    color: rgb(216, 147, 20);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    text-align: center;
+    display: inline-block;
+    width: 13.5%;
+}
+/*content in each day*/
+.days{
+    padding: auto;
+    background: rgb(209, 240, 221);
+}
+
+.days li{
+    display: inline-block;
+    width: 13.5%;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 53px;
+    margin-bottom: 53px;
+    color: darkorange;
+}
+/*sytle for important dates*/
+.days li .important{
+    padding: 10px;
+    color: rgb(90, 61, 197);
+    background: yellow;
+    margin-top: 53px;
+}

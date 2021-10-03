@@ -1,0 +1,100 @@
+.showcase {
+    /*backgound img for showcase section.*/
+    background-image: url("img/home.jpg");
+}
+
+body {
+    /*background color*/
+    background-color: #f0f0f0;
+}
+
+/*general style for the infomation container(displayed like a card)*/
+
+.cards {
+    width: 95%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/*styles for each card*/
+
+.cards div {
+    width: 90%;
+    padding: 10px;
+    margin: 10px;
+    background-color: rgb(185, 185, 185);
+    border: #323334 4px solid;
+    border-radius: 5px;
+    transition: all 0.35s ease-in-out;
+}
+
+/*sytle for text description*/
+
+.cards div * {
+    color: #323334;
+    transition: color 0.3s ease-in-out;
+}
+
+.cards li {
+    list-style: square;
+}
+
+/*style of all the links in the description*/
+
+.cards a {
+    text-decoration: none;
+    color: #323334;
+    padding-bottom: 0;
+    margin-bottom: 1px;
+    border-spacing: 0;
+    /*makes the border underline looks good*/
+    border-bottom: 1px transparent solid;
+    transition: color 0.35s ease-in-out, border-bottom 0.35s ease-in-out;
+}
+
+/*hover underline effect for links*/
+
+.cards a:hover {
+    border-bottom: 1px #f0f0f0 solid;
+}
+
+/*hover background color change for each card.*/
+
+.cards div:not(.feedback):hover {
+    background-color: #323334;
+    border-color: rgb(190, 190, 190);
+}
+
+/*hover color for all text description.*/
+
+.cards div:hover *:not(button) {
+    color: rgb(240, 240, 240);
+}
+
+/*style for feedback form*/
+
+.feedback form{
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+}
+
+/*style for submit button*/
+.submit {
+    font-size: 16px;
+    background-color: rgb(50, 51, 52, 0.6);
+    border-radius: 15px;
+    width: 20%;
+    transition: background-color 0.5s ease-in-out;
+    margin: 10px 5px;
+}
+/*hover effect for submit button*/
+.submit:hover{
+    cursor: pointer;
+    background-color: rgb(50, 51, 52, 0.9);
+}

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Remark Requests</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../static/view_remark.css">
+    <link rel="stylesheet" type="text/css" href="../static/main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <!--The following is the navagation bar, with a logo and a few links-->
+        <!--<div id="logo">CSCB63</div> -->
+        <div id="mobile" class="user">
+            <i class="fas fa-user"></i>
+            <ul class="user-list">
+                <li onclick="location.href='/grades'"><a href="/grades">Grades</a></li>
+                {% if info['type'] == 'instructor' %}
+                <li onclick="location.href='/studentremarkrequest'"><a href="/studentremarkrequest">Remarks</a></li>
+                <li onclick="location.href='/feedback'"><a href="/feedback">View Feedback</a></li>
+                {% elif info['type'] == 'student' %}
+                <li onclick="location.href='/feedback'"><a href="/feedback">Send Feedback</a></li>
+                {% endif %}
+                <li onclick="location.href='/login'"><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+        <img id="logo" src="../static/img/logo.png" alt="logo">
+        <!--I am actaully using this input as a button here, in order to use :checked selector.-->
+        <ul class="links">
+            <li class="link" onclick="location.href='/'"><a class="first" href="/">Home</a></li>
+            <li class="link" onclick="location.href='/lectures'"><a class="first" href="/lectures">Lectures</a>
+            </li>
+            <li class="link" onclick="location.href='/tutorials'"><a class="first" href="/tutorials">Tutorials</a></li>
+            <li class="link" id="drop-down">
+                <a href="#">Others&#9660</a>
+                <ul class="sub-list">
+                    <li class="sub-link" onclick="location.href='/assignments'"><a href="/assignments">Assignments</a>
+                    </li>
+                    <li class="sub-link" onclick="location.href='/staff'"><a href="/staff">Course Team</a></li>
+                    <li class="sub-link" onclick="location.href='/links'"><a href="/links">Links</a></li>
+                    <li class="sub-link" onclick="location.href='/calendar'"><a href="/calendar">Calendar</a></li>
+                </ul>
+            </li>
+            <div id="inner" class="user">
+                <i class="fas fa-user"></i>
+                <ul class="user-list">
+                    <li onclick="location.href='/grades'"><a href="/grades">Grades</a></li>
+                    {% if info['type'] == 'instructor' %}
+                    <li onclick="location.href='/studentremarkrequest'"><a href="/studentremarkrequest">Remarks</a></li>
+                    <li onclick="location.href='/feedback'"><a href="/feedback">View Feedback</a></li>
+                    {% elif info['type'] == 'student' %}
+                    <li onclick="location.href='/feedback'"><a href="/feedback">Send Feedback</a></li>
+                    {% endif %}
+                    <li onclick="location.href='/login'"><a href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </ul>
+        <div id="outer" class="user">
+            <a href="#">Hi, {{ info['first'] }}!</a>
+            <ul class="user-list">
+                <li onclick="location.href='/grades'"><a href="/grades">Grades</a></li>
+                {% if info['type'] == 'instructor' %}
+                <li onclick="location.href='/studentremarkrequest'"><a href="/studentremarkrequest">Remarks</a></li>
+                <li onclick="location.href='/feedback'"><a href="/feedback">View Feedback</a></li>
+                {% elif info['type'] == 'student' %}
+                <li onclick="location.href='/feedback'"><a href="/feedback">Send Feedback</a></li>
+                {% endif %}
+                <li onclick="location.href='/login'"><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+
+        <!--This is the icon for side bar-->
+        <label class="side-btn" for="checker">
+            <div></div>
+            <div></div>
+            <div></div>
+        </label>
+        <!--The following is the menu bar for mobile view (some elements are collapsed into the side bar)-->
+    </nav>
+    <!--a new list for side menu-->
+    <input type="checkbox" id="checker">
+    <ul class="side-bar">
+        <li class="link" onclick="location.href='/'">
+            <a class="first" href="/">Home</a>
+        </li>
+        <li class="link" onclick="location.href='/lectures'">
+            <a class="first" href="/lectures">Lectures</a>
+        </li>
+        <li class="link" onclick="location.href='/tutorials'">
+            <a class="first" href="/tutorials">Tutorials</a>
+        </li>
+        <li class="link" onclick="location.href='/assignments'">
+            <a href="/assignments">Assignments</a>
+        </li>
+        <li class="link" onclick="location.href='/staff'">
+            <a href="/staff">Course Team</a>
+        </li>
+        <li class="link" onclick="location.href='/links'">
+            <a href="/links">Links</a>
+        </li>
+        <li class="link" onclick="location.href='/calendar'">
+            <a href="/calendar">Calendar</a>
+        </li>
+    </ul>
+    <!--end of nav bar-->
+    <!--Beginning of content-->
+    <div class="content">
+        <!--The title of the page, with image.-->
+        <div class="showcase">
+            <div>
+                <h1>Remark Request</h1>
+                <p>Imagine CS assignments without automarking lol.</p>
+            </div>
+        </div>
+        <!--Display all the remark requests for all students-->
+        <div class="remarks">
+            {% for item in studentremark %}
+            <div class="remark">
+                <p>Name:<br>{{ item['username'] }}</p>
+                {% if item['type'] == 'lab' %}
+                <p>Remark for:<br>Lab</p>
+                {% elif item['type'] == 'a1' %}
+                <p>Remark for:<br>Assignment 1</p>
+                {% elif item['type'] == 'a2' %}
+                <p>Remark for:<br>Assignment 2</p>
+                {% elif item['type'] == 'a3' %}
+                <p>Remark for:<br>Assignment 3</p>
+                {% elif item['type'] == 't1' %}
+                <p>Remark for:<br>Term Test 1</p>
+                {% elif item['type'] == 't2' %}
+                <p>Remark for:<br>Term Test 2</p>
+                {% elif item['type'] == 't3' %}
+                <p>Remark for:<br>Term Test 3</p>
+                {% elif item['type'] == 'final' %}
+                <p>Remark for:<br>Final</p>
+                {% endif %}
+                <p>Reason:<br>{{ item['reason'] }}</p>
+                {% if item['status'] == 'rejected' %}
+                <p class="un-res">Status: Rejected</p>
+                {% elif item['status'] == 'approved' %}
+                <p class="res">Status: Approved</p>
+                {% else: %}
+                <p>Status: Pending</p>
+                {% endif %}
+                <!--Form for handling a remark-->
+                <form method="POST" action="/handleremark" onsubmit="return confirm('Are you sure to submit this change?');">
+                    <select name="status" class="input" >
+                        <option value="approved">Approve</option>
+                        <option value="rejected">Reject</option>
+                        <option value="pending">Mark as pending</option>
+                    </select>
+                    <input type="submit" value="Submit">
+                    <input type="hidden" name="rid" value="{{item['rid']}}">
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+    <!--footer section-->
+    <footer>
+        <!--text-->
+        <div class="footnote">
+            <p>
+                A redesign of the CSCB63 course website by Brian Lai, Xiaotong Ye and Yangkun Li, for CSCB20 assignment.
+                Originally by Anna Bretscher.
+            </p>
+            <p>Anna Bretscher, Brian Lai, Xiaotong Ye, Yangkun Li Copyright &copy2021;</p>
+        </div>
+        <!--links-->
+        <div class="foot-links">
+            <div onclick="location.href='https://web.cs.toronto.edu/'">
+                <a href="https://web.cs.toronto.edu/">Department of CS</a>
+            </div>
+            <div onclick="location.href='mailto:yangkun.li@utoronto.ca'">
+                <a href="mailto:yangkun.li@utoronto.ca">Contact</a>
+            </div>
+        </div>
+    </footer>
+    <!--end!-->
+</body>
+
+</html>

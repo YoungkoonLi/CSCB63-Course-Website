@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CSCB63--Calendar</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../static/calendar.css">
+    <link rel="stylesheet" type="text/css" href="../static/main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <!--The following is the navagation bar, with a logo and a few links-->
+        <!--<div id="logo">CSCB63</div> -->
+        <div id="mobile" class="user">
+            <i class="fas fa-user"></i>
+            <ul class="user-list">
+                <li onclick="location.href='/grades'"><a href="/grades">Grades</a></li>
+                {% if info['type'] == 'instructor' %}
+                <li onclick="location.href='/studentremarkrequest'"><a href="/studentremarkrequest">Remarks</a></li>
+                <li onclick="location.href='/feedback'"><a href="/feedback">View Feedback</a></li>
+                {% elif info['type'] == 'student' %}
+                <li onclick="location.href='/feedback'"><a href="/feedback">Send Feedback</a></li>
+                {% endif %}
+                <li onclick="location.href='/login'"><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+        <img id="logo" src="../static/img/logo.png" alt="logo">
+        <!--I am actaully using this input as a button here, in order to use :checked selector.-->
+        <ul class="links">
+            <li class="link" onclick="location.href='/'"><a class="first" href="/">Home</a></li>
+            <li class="link" onclick="location.href='/lectures'"><a class="first" href="/lectures">Lectures</a>
+            </li>
+            <li class="link" onclick="location.href='/tutorials'"><a class="first" href="/tutorials">Tutorials</a></li>
+            <li class="link" id="drop-down">
+                <a href="#">Others&#9660</a>
+                <ul class="sub-list">
+                    <li class="sub-link" onclick="location.href='/assignments'"><a href="/assignments">Assignments</a>
+                    </li>
+                    <li class="sub-link" onclick="location.href='/staff'"><a href="/staff">Course Team</a></li>
+                    <li class="sub-link" onclick="location.href='/links'"><a href="/links">Links</a></li>
+                    <li class="sub-link" onclick="location.href='/calendar'"><a href="/calendar">Calendar</a></li>
+                </ul>
+            </li>
+            <div id="inner" class="user">
+                <i class="fas fa-user"></i>
+                <ul class="user-list">
+                    <li onclick="location.href='/grades'"><a href="/grades">Grades</a></li>
+                    {% if info['type'] == 'instructor' %}
+                    <li onclick="location.href='/studentremarkrequest'"><a href="/studentremarkrequest">Remarks</a></li>
+                    <li onclick="location.href='/feedback'"><a href="/feedback">View Feedback</a></li>
+                    {% elif info['type'] == 'student' %}
+                    <li onclick="location.href='/feedback'"><a href="/feedback">Send Feedback</a></li>
+                    {% endif %}
+                    <li onclick="location.href='/login'"><a href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </ul>
+        <div id="outer" class="user">
+            <a href="#">Hi, {{ info['first'] }}!</a>
+            <ul class="user-list">
+                <li onclick="location.href='/grades'"><a href="/grades">Grades</a></li>
+                {% if info['type'] == 'instructor' %}
+                <li onclick="location.href='/studentremarkrequest'"><a href="/studentremarkrequest">Remarks</a></li>
+                <li onclick="location.href='/feedback'"><a href="/feedback">View Feedback</a></li>
+                {% elif info['type'] == 'student' %}
+                <li onclick="location.href='/feedback'"><a href="/feedback">Send Feedback</a></li>
+                {% endif %}
+                <li onclick="location.href='/login'"><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+
+        <!--This is the icon for side bar-->
+        <label class="side-btn" for="checker">
+            <div></div>
+            <div></div>
+            <div></div>
+        </label>
+        <!--The following is the menu bar for mobile view (some elements are collapsed into the side bar)-->
+    </nav>
+    <!--a new list for side menu-->
+    <input type="checkbox" id="checker">
+    <ul class="side-bar">
+        <li class="link" onclick="location.href='/'">
+            <a class="first" href="/">Home</a>
+        </li>
+        <li class="link" onclick="location.href='/lectures'">
+            <a class="first" href="/lectures">Lectures</a>
+        </li>
+        <li class="link" onclick="location.href='/tutorials'">
+            <a class="first" href="/tutorials">Tutorials</a>
+        </li>
+        <li class="link" onclick="location.href='/assignments'">
+            <a href="/assignments">Assignments</a>
+        </li>
+        <li class="link" onclick="location.href='/staff'">
+            <a href="/staff">Course Team</a>
+        </li>
+        <li class="link" onclick="location.href='/links'">
+            <a href="/links">Links</a>
+        </li>
+        <li class="link" onclick="location.href='/calendar'">
+            <a href="/calendar">Calendar</a>
+        </li>
+    </ul>
+    <!--end of nav bar-->
+    <!--Beginning of content-->
+    <div class="content">
+        <!--The title of the page, with image.-->
+        <div class="showcase">
+            <div>
+                <h1>Calendar with important dates</h1>
+                <p>Does time make calender, or the other way around?</p>
+            </div>
+        </div>
+        <!--The calendar-->
+        <div class="month">
+            <ul>
+                <li align=center>
+                    January <br>
+                    2021
+                </li>
+            </ul>
+        </div>
+
+        <ul class="weekdays">
+            <li>Monday</li>
+            <li>Tuesday</li>
+            <li>Wednesday</li>
+            <li>Thursday</li>
+            <li>Friday</li>
+            <li>Saturday</li>
+            <li>Sunday</li>
+        </ul>
+
+        <ul class="days">
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+            <li><span class="important">11, Week 1</span></li>
+            <li>12</li>
+            <li><span class="important">13, Lecture 3:10pm</span></li>
+            <li><span class="important">14, Lecture 9:10am</span></li>
+            <li>15</li>
+            <li>16</li>
+            <li>17</li>
+            <li><span class="important">18, Week 2</span></li>
+            <li>19</li>
+            <li><span class="important">20, Lecture 3:10pm</span></li>
+            <li><span class="important">21, Lecture 9:10am</span></li>
+            <li>22</li>
+            <li>23</li>
+            <li>24</li>
+            <li><span class="important">25, Week 3, Office Hour: 9:10am</span></li>
+            <li>26</li>
+            <li><span class="important">27, Lecture 3:10pm</span></li>
+            <li><span class="important">28, Lecture 9:10am</span></li>
+            <li><span class="important">29, Office Hour: 11:10am</span></li>
+            <li>30</li>
+            <li>31</li>
+        </ul>
+
+        </header>
+        <div class="month">
+            <ul>
+                <li align=center>
+                    February <br>
+                    2021
+                </li>
+            </ul>
+        </div>
+
+        <ul class="weekdays">
+            <li>Monday</li>
+            <li>Tuesday</li>
+            <li>Wednesday</li>
+            <li>Thursday</li>
+            <li>Friday</li>
+            <li>Saturday</li>
+            <li>Sunday</li>
+        </ul>
+
+        <ul class="days">
+            <li>&nbsp;</li>
+            <li><span class="important">1, Week 4, Office Hour: 9:10am</span></li>
+            <li>2</li>
+            <li><span class="important">3, Lecture 3:10pm</span></li>
+            <li><span class="important">4, Lecture 9:10am</span></li>
+            <li><span class="important">5, Office Hour: 10:40am</span></li>
+            <li>6</li>
+            <li><span class="important">7, <b>A1 Due</b></span></li>
+            <li><span class="important">8, Week 5, Office Hour: 9:10am</span></li>
+            <li>9</li>
+            <li><span class="important">10, Lecture 3:10pm, <b>Test 1: 3pm</b></span></li>
+            <li><span class="important">11, Lecture 9:10am</span></li>
+            <li><span class="important">12, Office Hour: 10:40am</span></li>
+            <li>13</li>
+            <li>14</li>
+            <li><span class="important">15, Reading Week</span></li>
+            <li>16</li>
+            <li>17</li>
+            <li>18</li>
+            <li>19</li>
+            <li>20</li>
+            <li>21</li>
+            <li><span class="important">22, Week 6, Office Hour: 9:10am</span></li>
+            <li>23</li>
+            <li><span class="important">24, Lecture 3:10pm</span></li>
+            <li><span class="important">25, Lecture 9:10am</span></li>
+            <li><span class="important">26, Office Hour: 10:40am</span></li>
+            <li>27</li>
+            <li>28</li>
+        </ul>
+
+        </header>
+        <div class="month">
+            <ul>
+                <li align=center>
+                    March <br>
+                    2021
+                </li>
+            </ul>
+        </div>
+
+        <ul class="weekdays">
+            <li>Monday</li>
+            <li>Tuesday</li>
+            <li>Wednesday</li>
+            <li>Thursday</li>
+            <li>Friday</li>
+            <li>Saturday</li>
+            <li>Sunday</li>
+        </ul>
+
+        <ul class="days">
+            <li>&nbsp;</li>
+            <li><span class="important">1, Week 7, Office Hour: 9:10am</span></li>
+            <li>2</li>
+            <li><span class="important">3, Lecture 3:10pm</span></li>
+            <li><span class="important">4, Lecture 9:10am</span></li>
+            <li><span class="important">5, Office Hour: 12:30pm</span></li>
+            <li><span class="important">6, <b>A2 Due</b></span></li>
+            <li>7</li>
+            <li><span class="important">8, Week 8, Office Hour: 9:10am</span></li>
+            <li>9</li>
+            <li><span class="important">10, Lecture 3:10pm</span></li>
+            <li><span class="important">11, Lecture 9:10am</span></li>
+            <li><span class="important">12, Office Hour: 11am</span></li>
+            <li>13</li>
+            <li>14</li>
+            <li><span class="important">15, Week 9, Office Hour: 9:10am</span></li>
+            <li>16</li>
+            <li><span class="important">17, Lecture 3:10pm, <b>Test 2: 3pm</b></span></li>
+            <li><span class="important">18, Lecture 9:10am</span></li>
+            <li><span class="important">19, Office Hour: 10:40am</span></li>
+            <li>20</li>
+            <li><span class="important">21, <b>A3 Due</b></span></li>
+            <li><span class="important">22, Week 10, Office Hour: 9:10am</span></li>
+            <li>23</li>
+            <li><span class="important">24, Lecture 3:10pm, <b>Test 3: 5pm</b></span></li>
+            <li><span class="important">25, Lecture 9:10am</span></li>
+            <li><span class="important">26, Office Hour: 10:40am</span></li>
+            <li>27</li>
+            <li>28</li>
+            <li><span class="important">29, Week 11, Office Hour: 9:10am</span></li>
+            <li>30</li>
+            <li><span class="important">31, Lecture 3:10pm</span></li>
+        </ul>
+
+
+        </header>
+        <div class="month">
+            <ul>
+                <li align=center>
+                    April <br>
+                    2021
+                </li>
+            </ul>
+        </div>
+
+        <ul class="weekdays">
+            <li>Monday</li>
+            <li>Tuesday</li>
+            <li>Wednesday</li>
+            <li>Thursday</li>
+            <li>Friday</li>
+            <li>Saturday</li>
+            <li>Sunday</li>
+        </ul>
+
+        <ul class="days">
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li><span class="important">1, Lecture 9:10am</span></li>
+            <li><span class="important">2, Office Hour: 10:40am</span></li>
+            <li>3</li>
+            <li>4</li>
+            <li><span class="important">5, Week 12, Office Hour: 9:10am</span></li>
+            <li>6</li>
+            <li><span class="important">7, Lecture 3:10pm</span></li>
+            <li><span class="important">8, Lecture 9:10am</span></li>
+            <li><span class="important">9, Office Hour: 10:40am</span></li>
+            <li><span class="important">10, <b>A4 Due</b></span></li>
+            <li>11</li>
+            <li>12</li>
+            <li>13</li>
+            <li>14</li>
+            <li>15</li>
+            <li>16</li>
+            <li>17</li>
+            <li>18</li>
+            <li>19</li>
+            <li><span class="important">20, <b>Final Exam: 8-11am</b></span></li>
+            <li>21</li>
+            <li>22</li>
+            <li>23</li>
+            <li>24</li>
+            <li>25</li>
+            <li>26</li>
+            <li>27</li>
+            <li>28</li>
+            <li>29</li>
+            <li>30</li>
+        </ul>
+    </div>
+
+    <!--footer section-->
+    <footer>
+        <!--text-->
+        <div class="footnote">
+            <p>
+                A redesign of the CSCB63 course website by Brian Lai, Xiaotong Ye and Yangkun Li, for CSCB20 assignment.
+                Originally by Anna Bretscher.
+            </p>
+            <p>Anna Bretscher, Brian Lai, Xiaotong Ye, Yangkun Li Copyright &copy2021;</p>
+        </div>
+        <!--links-->
+        <div class="foot-links">
+            <div onclick="location.href='https://web.cs.toronto.edu/'">
+                <a href="https://web.cs.toronto.edu/">Department of CS</a>
+            </div>
+            <div onclick="location.href='mailto:yangkun.li@utoronto.ca'">
+                <a href="mailto:yangkun.li@utoronto.ca">Contact</a>
+            </div>
+        </div>
+    </footer>
+    <!--end!-->
+</body>
+
+</html>

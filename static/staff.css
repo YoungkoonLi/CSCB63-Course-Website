@@ -1,0 +1,30 @@
+.showcase{
+    /*backgound image for showcase area.*/
+    background-image: url(img/assignment.jpg);
+}
+
+/*general display style for list of instructors*/
+.list{
+    width: 95%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.list div{
+    width: 90%;
+    padding: 10px;
+    margin: 10px;
+    background-color: rgb(185, 185, 185);   
+    border-radius: 5px;
+    transition: all 0.35s ease-in-out;
+}
+
+/*hover background color change for each element.*/
+.list div:hover {
+    background-color: rgb(145, 145, 145);
+    color: #f0f0f0;
+    cursor: default;
+}

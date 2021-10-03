@@ -1,0 +1,50 @@
+/*background image for showcase*/
+.showcase{
+    background-image: url(img/feedback.jpg);
+}
+/*style for the list of feedback*/
+.feedbacks{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #dadada;
+    width: 100%;
+}
+
+.feedback{
+    list-style: square;
+    background-color: #c0c0c0;
+    border-radius: 5px;
+    border: 2px #323334 solid;
+    margin: 10px 0;
+    width: 70%;
+    transition: background-color 0.3s ease, color 0.3s ease-in-out;
+}
+/*this is shown when no feedback availiable*/
+.empty{
+    padding: 8%;
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin: 10px;
+    background-color: #323334;
+    border-radius: 5px;
+    color: #f0f0f0;
+    width: 80%;
+    text-align: center;
+}
+
+/*hover effects*/
+
+
+
+/*sytle for text inside each feedback*/
+.feedback > li{
+    margin: 7px auto;
+}
+
+/*hover effects*/
+.feedback:hover{
+    color: #f0f0f0;
+    background-color: #323334d2;
+}

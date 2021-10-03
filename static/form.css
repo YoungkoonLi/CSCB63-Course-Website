@@ -1,0 +1,98 @@
+/*import fonts*/
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+/*remove default margin and outline*/
+*{
+  margin: 0;
+  outline: none;
+}
+/*format for the entire form*/
+.form{
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  background-color: #323334;
+  border-radius: 5px;
+  color: #f0f0f0;
+  font-family: 'Roboto', sans-serif;
+}
+.form > p{
+  letter-spacing: 2px;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 10px;
+}
+
+/*style for input fields*/
+.inputs{
+  display: flex;
+  flex-direction: column;
+  letter-spacing: 1px;
+  width: 60%;
+}
+
+.inputs > div{
+  margin: 5px;
+  color: #a0a0a0;
+  transition: color 0.2s ease;
+}
+.inputs:first-child{
+  margin-top: 10px;
+}
+.inputs:last-child{
+  margin-bottom: 0;
+}
+
+.input{
+  color: #f0f0f0;
+  background-color: transparent;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  width: 100%;
+  border: none;
+  border-spacing: 0px;
+  border-bottom: 2px #a0a0a0 solid;
+  transition: border-color 0.2s ease;
+  resize: none;
+}
+/*drop down list style*/
+.input > option{
+  color: #323334;
+  background-color: #f0f0f0;
+  transition: background-color 0.25s ease-in-out;
+}
+
+
+/*active effects for input field*/
+.input:focus{
+  border-color: #f7f7f7;
+}
+
+.inputs>div:focus-within{
+  color: #f7f7f7;
+}
+
+/*style for submit button*/
+.form > button{
+  margin: 15px;
+  letter-spacing: 2px;
+  font-size: 16px;
+  color: #f0f0f0;
+  text-transform: uppercase;
+  padding: 7px 0;
+  width: 10%;
+  border-radius: 50px;
+  border: 2px #f0f0f0 solid;
+  background-color: transparent;
+  transition: background-color 0.35s ease, width 0.35s ease, color 0.35s ease-in-out;
+}
+/*hover effects*/
+.form > button:hover{
+  cursor: pointer;
+  color: #323334;
+  background-color: #f0f0f0;
+  width: 20%;
+}

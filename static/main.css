@@ -1,0 +1,493 @@
+/*
+<------------------------------------------------->
+This is the style sheet where the styles common
+to all pages such as the navation menu are stored
+<------------------------------------------------->
+*/
+
+/*import icon*/
+
+@import "https://use.fontawesome.com/releases/v5.5.0/css/all.css";
+/*removes default margin for all*/
+
+* {
+    margin: 0;
+}
+
+/*disable horizontal scroll and sets the background*/
+
+body {
+    overflow-x: hidden;
+    background-color: #f0f0f0;
+}
+
+/*The navagation bar (nav) use flex display, where links and the logo are 
+flex items. The following changes the font, and also gives a min height to 
+ensure proper disply*/
+
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8.8vh;
+    /*minimum height is 8.8% of the screen size*/
+    font-family: 'Lato', sans-serif;
+    background-color: #323334;
+}
+
+/*push down the content to avoid overlay with nav bar.*/
+
+.content {
+    margin-top: 11vh;
+}
+
+/*set the showcase image and style*/
+
+.showcase {
+    height: 55vh;
+    width: 100%;
+    margin: 0 2px 2px 2px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-bottom: #323334 5px solid;
+}
+
+/*text description for showcase.*/
+
+.showcase div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #f0f0f0;
+    background-color: rgb(0, 0, 0, 0.35);
+    text-align: center;
+}
+
+/*sytles for showcase title and description*/
+
+.showcase div h1 {
+    font-size: 35px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border: #f0f0f0 4px solid;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 0px 5px 10px 5px;
+}
+
+.showcase div p {
+    margin: 10px 10px 0px 10px;
+    font-size: 18px;
+    font-weight: 550;
+}
+
+/*This is the sytle applied to all the links as a group. The group (a list of links)
+uses flex display. Inside the group, links are flex items.*/
+
+.links {
+    display: flex;
+    justify-content: space-around;
+    width: 45%;
+    padding-left: 0;
+    /*remove weird default padding here*/
+}
+
+/*removes the dot decoration in front of all the list items in the nav bar.*/
+
+.link {
+    list-style-type: none;
+    position: relative;
+    padding: 8px;
+}
+
+/*Styles for the links. sets the font, color, spacing, size and removes underline effect.*/
+
+.link a {
+    color: rgb(240, 240, 240);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-size: 17px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/*sets the bottom hover bar(:after)*/
+
+.first:after {
+    background: none 0 0 transparent;
+    /*don't show it when not hovered*/
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: rgb(240, 240, 240);
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+/*hover effect, restore width to 100% to show the under-bar.*/
+
+.link:hover {
+    cursor: pointer;
+}
+
+.link:hover a:after {
+    width: 100%;
+    left: 0;
+}
+
+/*style for drop-down menu*/
+
+.sub-list {
+    padding-left: 0;
+    position: absolute;
+    /*again, remove weird default padding here*/
+    right: 0;
+    border-radius: 5px;
+    border-top: 2px #f0f0f0 solid;
+    margin-top: 8px;
+    background-color: #323334;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    margin: 0.2s ease-in-out;
+    visibility: hidden;
+}
+
+/*remove default list style and add some new ones*/
+
+.sub-link {
+    list-style: none;
+    margin: 5px 10px;
+    padding: 5px;
+    text-align: center;
+    transition: background-color 0.35s ease-in-out;
+}
+
+/*link text*/
+
+.sub-link a {
+    text-align: center;
+    font-size: 15px;
+}
+
+/*drop when hovered: */
+
+#drop-down:hover .sub-list {
+    visibility: visible;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: #323334;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/*sytle each items in the drop-down menu when hovered*/
+
+#drop-down:hover .sub-link {
+    list-style: none;
+    align-self: stretch;
+    cursor: pointer;
+}
+
+#drop-down:hover .sub-link:hover {
+    /*styles when each item themselves are hovered*/
+    background-color: rgb(100, 100, 100);
+}
+
+/*sets the size and color of the icon*/
+
+.side-btn {
+    display: none;
+    transform-style: preserve-3d;
+    transform: translateZ(5px);
+    /*push element to top*/
+}
+
+.side-btn:hover {
+    cursor: pointer;
+}
+
+/*the three thick line for the icon*/
+
+.side-btn div {
+    height: 3px;
+    width: 25px;
+    margin: 5px;
+    background-color: rgb(240, 240, 240);
+}
+
+/*styles for the mobile side bar icon. Set display to none for non-mobile view.*/
+
+.side-bar {
+    display: none;
+    padding: 0;
+}
+
+/*make check-box invisible*/
+
+#checker {
+    display: none;
+}
+
+/*style for user account drop-down menu*/
+
+#inner {
+    display: none;
+    /*disable menu for tablet/mobile view*/
+}
+#mobile{
+    display: none;
+    /*same as above*/
+}
+
+.user {
+    color: #f0f0f0;
+}
+
+.user a {
+    text-decoration: none;
+    color: #f0f0f0;
+}
+
+.user>ul {
+    position: absolute;
+    list-style: none;
+    padding-left: 0;
+    margin-top: 2px 10px 0 0;
+    right: 1%;
+    background-color: #323334;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px #f0f0f0 solid;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.35s ease-in-out;
+    visibility: hidden;
+}
+
+.user>ul>li {
+    padding: 2px;
+    letter-spacing: 2px;
+    font-size: 15px;
+    font-weight: 550;
+    text-align: center;
+    width: 85%;
+    margin: 5px 25px;
+    background-color: #323334c5;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/*hover effects and drop down menu*/
+
+.user:hover ul {
+    visibility: visible;
+    opacity: 1;
+}
+
+.user:hover ul li:hover {
+    background-color: rgba(233, 233, 233, 0.35);
+    cursor: pointer;
+}
+
+/*Set the sytle when in tablet view.*/
+
+@media(max-width:950px) {
+    /*overwrite previous flex style. Flex column to adapt narrower screen.*/
+    nav {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+    }
+    /*This is the sytle applied to all the links as a group. The group (a list of links)
+    uses flex display. Inside the group, links are flex items.*/
+    .links {
+        padding-bottom: 5px;
+        display: flex;
+        justify-content: space-between;
+        width: 85%;
+    }
+    .first {
+        font-size: 15px;
+        /*adjust the font size of the links*/
+    }
+    /*show the inner user icon instead of outter user list*/
+    #outer {
+        display:none;
+    }
+    #inner {
+        display:unset;
+    }
+}
+
+/*Set the sytle when in mobile view*/
+
+@media screen and (max-width:650px) {
+    /*changes the style of links in the nav bar.*/
+    body {
+        overflow-x: hidden;
+        /*disable horizontal scroll.*/
+    }
+    /*overwrite previous flex style*/
+    nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .links {
+        /*disable non-mobile list*/
+        display: none;
+        /*push it to the side*/
+    }
+    /*Show the side bar icon.*/
+    .side-btn {
+        display: block;
+    }
+    /*style for the side-bar.*/
+    .side-bar {
+        position: fixed;
+        display: flex;
+        top: 11vh;
+        height: 89vh;
+        width: 55%;
+        right: 1px;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        background-color: rgb(50, 51, 52, 0);
+        opacity: 0;
+        /*move the menu to the side to hide it*/
+        transform: translateX(100%);
+        transition: opacity 0.35s ease;
+        transition: backgroud-color 0.35s ease;
+        transition: transform 0.3s ease;
+    }
+    /*style for menu items*/
+    .side-bar li {
+        padding: 20px 0 20px 0;
+        align-self: stretch;
+        text-align: center;
+        border-radius: 5px;
+        background-color: transparent;
+        transform: translateX(100%);
+        transition: transform 0.5s ease 0.2s, background-color 0.35s ease-in-out;
+    }
+    .side-bar li a {
+        text-align: center;
+        height: 100%;
+        width: 100%;
+    }
+    /*menu item hover effects*/
+    .side-bar li:hover {
+        cursor: pointer;
+        background-color: rgb(50, 51, 52);
+    }
+    .side-bar li a::after {
+        /*disable underline effect for mobile side-bar*/
+        display: none;
+    }
+    /*show and sytle the side bar*/
+    #checker:checked~.side-bar {
+        transform: translateX(0);
+        background-color: rgb(50, 51, 52, 0.75);
+        opacity: 100%;
+    }
+    #checker:checked~.side-bar li {
+        transform: translateX(0);
+        /*slide-in effect*/
+    }
+
+    #mobile{
+        display: unset;
+    }
+
+    #mobile > ul{
+        left: 1%;
+    }
+    #mobile>i:hover{
+        cursor: pointer;
+    }
+}
+
+/*font, size, color and position of the footer*/
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    font-family: 'Lato', sans-serif;
+    background-color: #323334;
+    width: 100%;
+    right: 0;
+    left: 0;
+    text-align: right;
+}
+
+/*style of the text in the footer*/
+
+.footnote {
+    width: 60%;
+    text-align: left;
+}
+
+.footnote p {
+    color: white;
+    font-weight: 510;
+    letter-spacing: 1px;
+    margin: 5px 10px;
+}
+
+/*footer links and buttons*/
+
+.foot-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.foot-links div {
+    margin: 5px 10px;
+    border: 2px #f0f0f0 solid;
+    border-radius: 20px;
+    padding: 8px 15px;
+    transition: background-color 0.35s ease-in-out;
+    text-align: center;
+}
+
+.foot-links div a {
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #f0f0f0;
+    text-align: center;
+    font-weight: 550;
+    transition: color 0.35s ease-in-out;
+}
+
+/*hover effects for buttons*/
+
+.foot-links div:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.foot-links div:hover a {
+    color: #323334;
+}

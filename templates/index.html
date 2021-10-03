@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/index.css">
+    <link rel="stylesheet" href="../static/main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <title>CSC B63--Home</title>
+</head>
+
+<body>
+    <nav>
+        <!--The following is the navagation bar, with a logo and a few links-->
+        <!--<div id="logo">CSCB63</div> -->
+        <div id="mobile" class="user">
+            <i class="fas fa-user"></i>
+            <ul class="user-list">
+                <li onclick="location.href='/grades'"><a href="/grades">Grades</a></li>
+                {% if info['type'] == 'instructor' %}
+                <li onclick="location.href='/studentremarkrequest'"><a href="/studentremarkrequest">Remarks</a></li>
+                <li onclick="location.href='/feedback'"><a href="/feedback">View Feedback</a></li>
+                {% elif info['type'] == 'student' %}
+                <li onclick="location.href='/feedback'"><a href="/feedback">Send Feedback</a></li>
+                {% endif %}
+                <li onclick="location.href='/login'"><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+        <img id="logo" src="../static/img/logo.png" alt="logo">
+        <!--I am actaully using this input as a button here, in order to use :checked selector.-->
+        <ul class="links">
+            <li class="link" onclick="location.href='/'"><a class="first" href="/">Home</a></li>
+            <li class="link" onclick="location.href='/lectures'"><a class="first" href="/lectures">Lectures</a>
+            </li>
+            <li class="link" onclick="location.href='/tutorials'"><a class="first" href="/tutorials">Tutorials</a></li>
+            <li class="link" id="drop-down">
+                <a href="#">Others&#9660</a>
+                <ul class="sub-list">
+                    <li class="sub-link" onclick="location.href='/assignments'"><a href="/assignments">Assignments</a>
+                    </li>
+                    <li class="sub-link" onclick="location.href='/staff'"><a href="/staff">Course Team</a></li>
+                    <li class="sub-link" onclick="location.href='/links'"><a href="/links">Links</a></li>
+                    <li class="sub-link" onclick="location.href='/calendar'"><a href="/calendar">Calendar</a></li>
+                </ul>
+            </li>
+            <div id="inner" class="user">
+                <i class="fas fa-user"></i>
+                <ul class="user-list">
+                    <li onclick="location.href='/grades'"><a href="/grades">Grades</a></li>
+                    {% if info['type'] == 'instructor' %}
+                    <li onclick="location.href='/studentremarkrequest'"><a href="/studentremarkrequest">Remarks</a></li>
+                    <li onclick="location.href='/feedback'"><a href="/feedback">View Feedback</a></li>
+                    {% elif info['type'] == 'student' %}
+                    <li onclick="location.href='/feedback'"><a href="/feedback">Send Feedback</a></li>
+                    {% endif %}
+                    <li onclick="location.href='/login'"><a href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </ul>
+        <div id="outer" class="user">
+            <a href="#">Hi, {{ info['first'] }}!</a>
+            <ul class="user-list">
+                <li onclick="location.href='/grades'"><a href="/grades">Grades</a></li>
+                {% if info['type'] == 'instructor' %}
+                <li onclick="location.href='/studentremarkrequest'"><a href="/studentremarkrequest">Remarks</a></li>
+                <li onclick="location.href='/feedback'"><a href="/feedback">View Feedback</a></li>
+                {% elif info['type'] == 'student' %}
+                <li onclick="location.href='/feedback'"><a href="/feedback">Send Feedback</a></li>
+                {% endif %}
+                <li onclick="location.href='/login'"><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+
+        <!--This is the icon for side bar-->
+        <label class="side-btn" for="checker">
+            <div></div>
+            <div></div>
+            <div></div>
+        </label>
+        <!--The following is the menu bar for mobile view (some elements are collapsed into the side bar)-->
+    </nav>
+    <!--a new list for side menu-->
+    <input type="checkbox" id="checker">
+    <ul class="side-bar">
+        <li class="link" onclick="location.href='/'">
+            <a class="first" href="/">Home</a>
+        </li>
+        <li class="link" onclick="location.href='/lectures'">
+            <a class="first" href="/lectures">Lectures</a>
+        </li>
+        <li class="link" onclick="location.href='/tutorials'">
+            <a class="first" href="/tutorials">Tutorials</a>
+        </li>
+        <li class="link" onclick="location.href='/assignments'">
+            <a href="/assignments">Assignments</a>
+        </li>
+        <li class="link" onclick="location.href='/staff'">
+            <a href="/staff">Course Team</a>
+        </li>
+        <li class="link" onclick="location.href='/links'">
+            <a href="/links">Links</a>
+        </li>
+        <li class="link" onclick="location.href='/calendar'">
+            <a href="/calendar">Calendar</a>
+        </li>
+    </ul>
+    <!--end of nav bar-->
+    <!--Beginning of content-->
+    <div class="content">
+        <div class="showcase">
+            <div>
+                <h1>Welcome to CSCB63</h1>
+                <p>Design, analysis, implementation and comparison of efficient data structures for common abstract data
+                    types.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="cards">
+            <div>
+                <h2>General Information</h2>
+                <ul>
+                    <li>
+                        <p>Design, analysis, implementation and comparison of efficient data
+                            structures for common abstract data types. Priority queues: heaps
+                            and mergeable heaps. Dictionaries: balanced binary search trees, B-trees,
+                            hashing. Amortization: data structures for managing dynamic tables and disjoint
+                            sets. Data structures for representing graphs. Graph searches.
+                        </p>
+                    </li>
+                    <li>
+                        <h3>Prerequisite:</h3>
+                        <p>CSCB36H3 <b>AND</b>
+                            <br>
+                            CGPA of at least 3.5, or enrolment in a CSC Subject POSt, or enrolment in a non-CSC Subject
+                            POSt
+                        </p>
+                    </li>
+                    <li>
+                        <h3><b>Exclusions:</b></h3><span>CSC263H, CSC265H</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h2>Course Schedule</h2>
+                <ul>
+                    <li>
+                        <h3>Lectures</h3>
+                        <p>Wednesdays 3-4pm <a href=" https://utoronto.zoom.us/j/89553548645">Zoom Link</a></p>
+                        <p>Thursdays 9:10-11:00
+                            <a href=" https://utoronto.zoom.us/j/83378932991">Zoom Link</a>
+                        </p>
+                    </li>
+                    <li>
+                        <h3>Office Hours</h3>
+                        <p>Usually Mondays 11:00-12:30, Friday 10:40-11:30. Please see the calendar for weekly
+                            changes.<br></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+    <!--footer section-->
+    <footer>
+        <!--text-->
+        <div class="footnote">
+            <p>
+                A redesign of the CSCB63 course website by Brian Lai, Xiaotong Ye and Yangkun Li, for CSCB20 assignment.
+                Originally by Anna Bretscher.
+            </p>
+            <p>Anna Bretscher, Brian Lai, Xiaotong Ye, Yangkun Li Copyright &copy2021;</p>
+        </div>
+        <!--links-->
+        <div class="foot-links">
+            <div onclick="location.href='https://web.cs.toronto.edu/'">
+                <a href="https://web.cs.toronto.edu/">Department of CS</a>
+            </div>
+            <div onclick="location.href='mailto:yangkun.li@utoronto.ca'">
+                <a href="mailto:yangkun.li@utoronto.ca">Contact</a>
+            </div>
+        </div>
+    </footer>
+    <!--end!-->
+</body>
+
+</html>

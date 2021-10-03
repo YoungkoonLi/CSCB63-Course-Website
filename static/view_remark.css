@@ -1,0 +1,104 @@
+/*background image for showcase*/
+
+.showcase {
+    background-image: url(img/remark.jpg);
+}
+
+/*style for the list of remark request*/
+
+.remarks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0;
+    width: 95%;
+    margin: 5px auto;
+}
+
+.remark {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 15px auto;
+    padding: 5px;
+    width: 85%;
+    background-color: #dadada;
+    color: #323334;
+    border-radius: 5px;
+    border: 1px #323334 solid;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    text-align: center;
+}
+
+/*style for text inside remark*/
+
+.remark>p {
+    margin: 5px;
+    padding: 5px;
+    text-align: left;
+    border-bottom: 1px #323334 solid;
+    transition: border-bottom 0.3s ease-in-out;
+}
+
+/*last item has no underline*/
+
+.remark>p:last-child {
+    border: none;
+}
+
+/*hover effects*/
+
+
+/*highlight for the status of remark*/
+
+.res {
+    color: green;
+    font-weight: 600;
+}
+
+.un-res {
+    color: red;
+    font-weight: 600;
+}
+
+/*style for submit button*/
+
+.remark>form>input {
+    margin: 15px;
+    letter-spacing: 1px;
+    font-size: 13px;
+    color: #323334;
+    text-transform: uppercase;
+    padding: 7px 0;
+    width: 12%;
+    border-radius: 50px;
+    border: 2px #323334 solid;
+    background-color: transparent;
+    transition: background-color 0.35s ease, color 0.35s ease-in-out;
+    text-align: center;
+}
+
+/*hover effects*/
+.remark>form>input:hover{
+    color: #f0f0f0;
+    background-color: #323334;
+    cursor: pointer;
+}
+
+/*dropdown list*/
+.remark>form>select{
+    outline: none;
+    background-color: #dadada;
+    color: #323334;
+    border: none;
+    border-bottom: 1px #323334 solid;
+    border-radius: 2px;
+    padding: 4px;
+    transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out,background-color 0.3s ease-in-out;
+}
+
+
+.remark select option{
+    font-size: 13px;
+    letter-spacing: 1px;
+}
